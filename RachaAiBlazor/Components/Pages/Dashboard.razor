@@ -1,0 +1,79 @@
+@page "/dashboard"
+
+@using RachaAiBlazor.Models
+
+<div class="container mt-4">
+
+    <h1 class="mb-4">RachaAí</h1>
+
+    <!-- CARDS -->
+    <div class="row mb-4">
+
+        <div class="col-md-4">
+            <div class="card p-3 shadow-sm">
+                <h5>Total a Receber</h5>
+                <h3 class="text-success">R$ 250</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 shadow-sm">
+                <h5>Total a Pagar</h5>
+                <h3 class="text-danger">R$ 120</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 shadow-sm">
+                <h5>Saldo Geral</h5>
+                <h3 class="text-primary">R$ 130</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LISTA -->
+    <h3>Meus Grupos</h3>
+
+    @if (grupos.Count == 0)
+    {
+        <p>
+            Você ainda não participa de nenhum grupo.
+            Que tal criar um?
+        </p>
+    }
+    else
+    {
+        @foreach (var grupo in grupos)
+        {
+            <GrupoCard Grupo="grupo" />
+        }
+    }
+
+    <!-- BOTÃO -->
+    <button class="btn btn-primary rounded-circle fab">
+        +
+    </button>
+
+</div>
+
+@code {
+
+    List<Grupo> grupos = new()
+    {
+        new Grupo
+        {
+            Nome = "República",
+            Categoria = "Casa",
+            Saldo = -50
+        },
+
+        new Grupo
+        {
+            Nome = "Churrasco",
+            Categoria = "Lazer",
+            Saldo = 120
+        }
+    };
+
+}

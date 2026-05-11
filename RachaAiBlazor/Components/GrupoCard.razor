@@ -1,0 +1,31 @@
+@using RachaAiBlazor.Models
+
+<div class="card p-3 mb-3 shadow-sm">
+    
+    <h5 class="fw-bold">@Grupo.Nome</h5>
+
+    <span class="badge bg-secondary mb-2">
+        @Grupo.Categoria
+    </span>
+
+    @if (Grupo.Saldo < 0)
+    {
+        <p class="text-danger fw-bold">
+            R$ @Grupo.Saldo
+        </p>
+    }
+    else
+    {
+        <p class="text-success fw-bold">
+            R$ @Grupo.Saldo
+        </p>
+    }
+
+</div>
+
+@code {
+
+    [Parameter]
+    public Grupo Grupo { get; set; }
+
+}
